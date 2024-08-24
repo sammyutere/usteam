@@ -86,7 +86,7 @@ pipeline{
         stage('check stage website availability') {
             steps {
                  sh "sleep 90"
-                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://stage.greatminds.sbs"
+                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://stage.linuxclaud.com"
                 script {
                     def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://stage.greatminds.sbs", returnStdout: true).trim()
                     if (response == "200") {
