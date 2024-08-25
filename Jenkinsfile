@@ -79,7 +79,7 @@ pipeline{
         stage('Deploy to stage') {
             steps {
                 sshagent(['ansible-key']) {
-                    sh 'ssh -t -t ec2-user@10.0.3.243 -o strictHostKeyChecking=no "ansible-playbook -i /etc/ansible/stage-hosts /etc/ansible/stage-playbook.yml"'
+                    sh 'ssh -t -t ec2-user@10.0.3.25 -o strictHostKeyChecking=no "ansible-playbook -i /etc/ansible/stage-hosts /etc/ansible/stage-playbook.yml"'
                 }
             }
         }
@@ -107,7 +107,7 @@ pipeline{
         stage('Deploy to prod') {
             steps {
                 sshagent(['ansible-key']) {
-                    sh 'ssh -t -t ec2-user@10.0.3.243 -o strictHostKeyChecking=no "ansible-playbook -i /etc/ansible/prod-hosts /etc/ansible/prod-playbook.yml"'
+                    sh 'ssh -t -t ec2-user@10.0.3.25 -o strictHostKeyChecking=no "ansible-playbook -i /etc/ansible/prod-hosts /etc/ansible/prod-playbook.yml"'
                 }
             }
         }
@@ -116,7 +116,7 @@ pipeline{
                  sh "sleep 90"
                  sh "curl -s -o /dev/null -w \"%{http_code}\" https://prod.greatminds.sbs"
                 script {
-                    def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://prod.greatminds.sbs", returnStdout: true).trim()
+                    def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://prod.linuxclaud.com", returnStdout: true).trim()
                     if (response == "200") {
                         slackSend(color: 'good', message: "The prod petclinic java application is up and running with HTTP status code ${response}.", tokenCredentialId: 'slack')
                     } else {
