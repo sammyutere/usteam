@@ -63,7 +63,7 @@ pipeline{
         }
         stage('Log Into Nexus Docker Repo') {
             steps {
-                sh 'docker login --username $NEXUS_USER --password $NEXUS_PASSWORD nexus.linuxclaud.com:8082/repository/docker-repo/'
+                sh 'docker login --username $NEXUS_USER --password $NEXUS_PASSWORD'
             }
         }
         stage('Push to Nexus Docker Repo') {
