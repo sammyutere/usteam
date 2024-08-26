@@ -4,7 +4,6 @@ pipeline{
         NEXUS_USER = credentials('nexus-username')
         NEXUS_PASSWORD = credentials('nexus-password')
         NEXUS_REPO = credentials('nexus-repo')
-        NEXUS_REPO_DOCKER = credentials('nexus-docker-repo')
     }
     stages {
         stage('Code Analysis') {
@@ -64,7 +63,7 @@ pipeline{
         }
         stage('Log Into Nexus Docker Repo') {
             steps {
-                sh 'docker login --username $NEXUS_USER --password $NEXUS_PASSWORD NEXUS_REPO_DOCKER'
+                sh 'docker login --username $NEXUS_USER --password $NEXUS_PASSWORD nexus.linuxclaud.com:8082/repository/docker-repo/'
             }
         }
         stage('Push to Nexus Docker Repo') {
