@@ -38,7 +38,7 @@ pipeline{
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build --no-cache -t $NEXUS_REPO/petclinicapps .'
+                sh 'docker build -t $NEXUS_REPO/petclinicapps .'
             }
         }
         stage('Push Artifact to Nexus Repo') {
