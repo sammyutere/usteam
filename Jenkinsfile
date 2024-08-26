@@ -49,7 +49,7 @@ pipeline{
                 type: 'war']],
                 credentialsId: 'nexus-creds',
                 groupId: 'Petclinic',
-                nexusUrl: 'https://nexus.linuxclaud.com',
+                nexusUrl: 'nexus.linuxclaud.com',
                 nexusVersion: 'nexus3',
                 protocol: 'https',
                 repository: 'nexus-repo',
