@@ -8,7 +8,7 @@ pipeline{
     stages {
         stage('Code Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube') {
+                withSonarQubeEnv('sonar-cred') {
                     sh 'mvn sonar:sonar'
                 }   
             }
