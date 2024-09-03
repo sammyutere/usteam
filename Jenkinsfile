@@ -114,7 +114,7 @@ pipeline{
         stage('check prod website availability') {
             steps {
                  sh "sleep 90"
-                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://prod.greatminds.sbs"
+                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://prod.linuxclaud.com"
                 script {
                     def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://prod.linuxclaud.com", returnStdout: true).trim()
                     if (response == "200") {
