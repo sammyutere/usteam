@@ -20,12 +20,12 @@ pipeline{
                 }
             }
         }
-        // stage('Dependency Check') {
-        //     steps {
-        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-        //     }
-        // }
+        stage('Dependency Check') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
         // stage('Test Code') {
         //     steps {
         //         sh 'mvn test -Dcheckstyle.skip'
